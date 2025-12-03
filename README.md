@@ -25,7 +25,7 @@ All API calls require authentication.
 
 3. Copy the access token from the response.
 
-4. Create a new `Authorization` header and set it to
+4. Create a new `Authorization` header and set it to:
 ```
 Bearer <token>
 ```
