@@ -1,40 +1,53 @@
 # Simple GraphQL server
-This project demonstrates basic operations such as getData, addData, deleteData, updateData built with GraphQL
+This project demonstrates basic GraphQL operations such as `getData`, `addData`, `deleteData`, and `updateData`.
 ## Installation:
 
 1. Download or clone this repository
 
-2. Open Powershell in the project folder
+2. Open PowerShell in the project folder
 
 3. Install required libraries with: **npm install**
 
-4. Start the server with: **node app.js** or **npm start**
+4. Start the server using: **node app.js** or **npm start**
 
-5. Open the homepage in your browser: http://localhost:4000/
+5. Open the GraphQL Sandbox at: http://localhost:4000/
 ## Login (JWT Authentication):
 
-All api calls require authentication
+All API calls require authentication.
 
-### Login:
+### Login steps:
 
-1. Go to the sandbox available at http://localhost:4000/ 
+1. Open the GraphQL SandBox at http://localhost:4000/ 
 
-2. Execute mutation login with the following credentials: username: "jk", password: "sala"
+2. Execute the `login` mutation with the following credentials:
+ - username: `"jk"`
+ - password: `"sala"`
 
-3. Copy the access token provided in the response body
+3. Copy the access token from the response.
 
-4. Create new Authorization header and put there: Bearer "insert here provided token"
+4. Create a new `Authorization` header and set it to
+```
+Bearer <token>
+```
 
 ## Operations:
-getAllData - Returns the whole database
-getDataById - Returns the data by provided id
-addData - Create new data. Id is automatically adjusted to the next free id
-deleteData - Deletes data by provided id
-updateData - Create new data if id is free or update the data already exists
-searchUser - Returns all users with provided forename
+- **getAllData** - Returns all data records.
+
+- **getDataById** - Returns a data record by the provided ID.
+
+- **addData** - Creates a new data entry. The ID is automatically set to the next available one.
+
+- **deleteData** - Deletes a data entry by the provided id.
+
+- **updateData** - Creates a new entry if the ID does not exist, or updates the existing one.
+
+- **searchUser** - Returns all users matching the provided forename.
 
 ## Testing
-Tests are separated in different files, where each file is responsible for 1 operation.
-Some files include several tests for different cases.
-Tests don't require additional authentication
-Automated tests can be run with: **npm test**
+Tests are organized into separate files, where each file covers one specific operation.
+Some files contain multiple test cases.
+
+Automated tests **do not require real authentication**, because each test injects its own
+GraphQL context through `contextValue`, bypassing JWT validation.
+
+Run automated tests using: **npm test**
